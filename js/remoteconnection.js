@@ -6,14 +6,6 @@
     var RCController = function(){
 
         var self = {};
-        var canvas;
-        var viewport;
-
-        var scale = 1;
-        var CSS_UNITS = 96.0 / 72.0;
-        var origHeight = 0;
-        var origWidth = 0;
-
         /**
          * Handler for the Message Event (Communicate with parent)
          * @param {Event} e
@@ -128,13 +120,18 @@
                 window.addEventListener('message', onMessage);
                 //let parent know we are ready to receive commands
                 postMessageEvent('ready');
+                //get the script folder path
+                var path = (new URL(document.querySelector('script[src*="remoteconnection.js"]').src)).pathname;
+                path = path.split('/');
+                path.pop();
+                path = path.join('/');
+                path+='/';
                 //load scripts
-                require('html2canvas.js');
-                require('html2canvas.svg.js');
+                require(path+'html2canvas.js');
+                require(path+'html2canvas.svg.js');
             }else{
                 window.addEventListener('load', loadHandler);
             }
-
         }
         init();
         self.postMessageEvent = postMessageEvent;
