@@ -45,6 +45,7 @@
                 case 'prev':
                     break;
                 case 'goToPage':
+                    location.href = value;
                     break;
                 case 'zoom':
                     break;
