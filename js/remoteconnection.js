@@ -85,7 +85,7 @@
         function printPage() {
             html2canvas(document.body, {letterRendering:true, useCors:true,
                 onrendered: function (canvas) {
-                    postMessageEvent('printPage', {href:location.href, img:canvas.toDataURL()});
+                    postMessageEvent('printPage', canvas.toDataURL());
                 }
             });
         }
@@ -127,7 +127,7 @@
                 //hook up message handler
                 window.addEventListener('message', onMessage);
                 //let parent know we are ready to receive commands
-                postMessageEvent('ready');
+                postMessageEvent('ready', location.href);
             }else{
                 window.addEventListener('load', loadHandler);
             }
