@@ -85,7 +85,7 @@
         function printPage() {
             html2canvas(document.body, {letterRendering:true, useCors:true,
                 onrendered: function (canvas) {
-                    postMessageEvent('printPage', canvas.toDataURL());
+                    postMessageEvent('printPage', {href:location.href, img:canvas.toDataURL()});
                 }
             });
         }
