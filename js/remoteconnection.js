@@ -12,19 +12,12 @@
          */
         function onMessage(e){
             e.stopImmediatePropagation();
-            var data, method;
-            try {
-                data = e.data;
-                method = data.method;
-            } catch (e) {
-                //fail silently... like a ninja!
-            }
-
+            var data = e.data||{};
+            var method = data.method;
             var params = data.params || [];
             var value = data.value;
             var eventData = data.data;
-            var targetId = data.targetId || data.player_id;
-
+            var targetId = data.targetId;
 
             if (value !== undefined) {
                 params.push(value);
@@ -46,6 +39,11 @@
                     break;
                 case 'goToPage':
                     location.href = value;
+                    break;
+                case 'size':
+                    document.style.maxWidth = value;
+                    documnet.style.margin = '0 auto';
+                    document.body.style.width = value;
                     break;
                 case 'zoom':
                     break;
@@ -129,6 +127,11 @@
                 window.addEventListener('message', onMessage);
                 //let parent know we are ready to receive commands
                 postMessageEvent('ready', location.href);
+                //set the body width to our default
+                document.body.style.width = '1024px';
+                document.body.style.position = 'relative';
+                document.style.maxWidth = '1024px';
+                documnet.style.margin = '0 auto';
             }else{
                 window.addEventListener('load', loadHandler);
             }
