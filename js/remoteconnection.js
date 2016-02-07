@@ -41,8 +41,8 @@
                     location.href = value;
                     break;
                 case 'size':
-                    document.style.maxWidth = value;
-                    document.style.margin = '0 auto';
+                    document.body.parentElement.style.maxWidth = value;
+                    document.body.parentElement.style.margin = '0 auto';
                     document.body.style.width = value;
                     break;
                 case 'zoom':
@@ -130,8 +130,8 @@
                 //set the body width to our default
                 document.body.style.width = '1024px';
                 document.body.style.position = 'relative';
-                document.style.maxWidth = '1024px';
-                documnet.style.margin = '0 auto';
+                document.body.parentElement.style.maxWidth = '1024px';
+                documnet.body.parentElement.style.margin = '0 auto';
             }else{
                 window.addEventListener('load', loadHandler);
             }
