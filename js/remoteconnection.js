@@ -116,19 +116,18 @@
          */
         function init(){
             if (document.readyState === 'complete') {
-                //hook up message handler
-                window.addEventListener('message', onMessage);
-                //let parent know we are ready to receive commands
-                postMessageEvent('ready');
                 //get the script folder path
                 var path = (new URL(document.querySelector('script[src*="remoteconnection.js"]').src)).pathname;
                 path = path.split('/');
                 path.pop();
                 path = path.join('/');
-                path+='/';
-                //load scripts
-                require(path+'html2canvas.js');
-                require(path+'html2canvas.svg.js');
+                //load required scripts
+                require(path+'/html2canvas.js');
+                require(path+'/html2canvas.svg.js');
+                //hook up message handler
+                window.addEventListener('message', onMessage);
+                //let parent know we are ready to receive commands
+                postMessageEvent('ready');
             }else{
                 window.addEventListener('load', loadHandler);
             }
