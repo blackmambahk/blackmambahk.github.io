@@ -42,7 +42,7 @@
                     break;
                 case 'size':
                     document.style.maxWidth = value;
-                    documnet.style.margin = '0 auto';
+                    document.style.margin = '0 auto';
                     document.body.style.width = value;
                     break;
                 case 'zoom':
