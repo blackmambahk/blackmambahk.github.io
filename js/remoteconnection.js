@@ -131,7 +131,7 @@
                 document.body.style.width = '1024px';
                 document.body.style.position = 'relative';
                 document.body.parentElement.style.maxWidth = '1024px';
-                documnet.body.parentElement.style.margin = '0 auto';
+                document.body.parentElement.style.margin = '0 auto';
             }else{
                 window.addEventListener('load', loadHandler);
             }
