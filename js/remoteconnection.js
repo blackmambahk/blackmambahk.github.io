@@ -1,6 +1,7 @@
 (function() {
     'use strict';
     /**
+     * The RemoteConnection receives commands from the remote window and responds by sending events
      */
     var RCController = function(){
 
@@ -114,17 +115,25 @@
             };
             ajax.send(null);
         }
+        function loadHandler(e){
+            window.removeEventListener('load',loadHandler);
+            init();
+        }
         /**
          *
          */
         function init(){
-            //hook up message handler
-            window.addEventListener('message', onMessage);
-            //let parent know we are ready to receive commands
-            postMessageEvent('ready');
-            //load scripts
-            require('html2canvas.js');
-            require('html2canvas.svg.js');
+            if (document.readyState === 'complete') {
+                //hook up message handler
+                window.addEventListener('message', onMessage);
+                //let parent know we are ready to receive commands
+                postMessageEvent('ready');
+                //load scripts
+                require('html2canvas.js');
+                require('html2canvas.svg.js');
+            }else{
+                window.addEventListener('load', loadHandler);
+            }
 
         }
         init();
