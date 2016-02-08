@@ -1,7 +1,7 @@
 (function() {
     'use strict';
     /**
-     * The RemoteConnection receives commands from the remote window and responds by sending events
+     * The RemoteConnection receives commands from the remote window and responds by sending back events
      */
     var RCController = function(){
 
@@ -84,7 +84,7 @@
         function printPage() {
             html2canvas(document.body, {letterRendering:true, useCors:true,
                 onrendered: function (canvas) {
-                    postMessageEvent('printPage', canvas.toDataURL());
+                    postMessageEvent('printPage', {img:canvas.toDataURL(), scrollLeft:pageXOffset,scrollTop:pageYOffset});
                 }
             });
         }
@@ -141,7 +141,7 @@
         self.postMessageCall = postMessageCall;
         return self;
     };
-    /**type PDFController*/
+    /**type RCController*/
     window.RCController = new RCController();
 
 })();
