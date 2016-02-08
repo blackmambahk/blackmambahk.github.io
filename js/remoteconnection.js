@@ -41,8 +41,8 @@
                     location.href = value;
                     break;
                 case 'size':
-                    document.body.parentElement.style.maxWidth = value;
-                    document.body.parentElement.style.margin = '0 auto';
+                    document.documentElement.style.maxWidth = value;
+                    document.documentElement.style.margin = '0 auto';
                     document.body.style.width = value;
                     break;
                 case 'zoom':
@@ -84,7 +84,7 @@
         function printPage() {
             html2canvas(document.body, {letterRendering:true, useCors:true,
                 onrendered: function (canvas) {
-                    postMessageEvent('printPage', {img:canvas.toDataURL(), scrollLeft:pageXOffset,scrollTop:pageYOffset});
+                    postMessageEvent('printPage', {img:canvas.toDataURL(), scrollLeft:pageXOffset, scrollTop:pageYOffset, pageWidth:document.documentElement.clientWidth, pageHeight:document.documentElement.clientHeight});
                 }
             });
         }
@@ -130,8 +130,8 @@
                 //set the body width to our default
                 document.body.style.width = '1024px';
                 document.body.style.position = 'relative';
-                document.body.parentElement.style.maxWidth = '1024px';
-                document.body.parentElement.style.margin = '0 auto';
+                document.documentElement.style.maxWidth = '1024px';
+                document.documentElement.style.margin = '0 auto';
             }else{
                 window.addEventListener('load', loadHandler);
             }
