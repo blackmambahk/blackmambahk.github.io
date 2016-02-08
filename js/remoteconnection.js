@@ -83,14 +83,12 @@
          */
         function printPage() {
             var rect  = document.documentElement.getBoundingClientRect();
-            document.documentElement.scrollTop = 0;
-            document.documentElement.scrollLeft = 0;
+            scrollTo(0,0);
             html2canvas(document.body, {letterRendering:true, useCors:true,
                 onrendered: function (canvas) {
                     //var rect  = document.documentElement.getBoundingClientRect();
-                    postMessageEvent('printPage', {img:canvas.toDataURL(), scrollLeft:-rect.left, scrollTop:-rect.top, pageWidth:rect.width, pageHeight:rect.height});
-                    document.documentElement.scrollTop = -rect.top;
-                    document.documentElement.scrollLeft = -rect.left;
+                    postMessageEvent('printPage', {img:canvas.toDataURL(), scrollLeft:rect.left, scrollTop:rect.top, pageWidth:rect.width, pageHeight:rect.height});
+                    scrollTo(rect.left, rect.top);
                 }
             });
         }
