@@ -47,6 +47,9 @@
                     break;
                 case 'zoom':
                     break;
+                case 'scrollTo':
+                    scrollTo(value.x,value.y);
+                    break;
                 case 'printPage':
                     printPage();
                     break;
