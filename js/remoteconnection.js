@@ -84,7 +84,8 @@
         function printPage() {
             html2canvas(document.body, {letterRendering:true, useCors:true,
                 onrendered: function (canvas) {
-                    postMessageEvent('printPage', {img:canvas.toDataURL(), scrollLeft:pageXOffset, scrollTop:pageYOffset, pageWidth:document.documentElement.clientWidth, pageHeight:document.documentElement.clientHeight});
+                    var rect  = document.documentElement.getBoundingClientRect();
+                    postMessageEvent('printPage', {img:canvas.toDataURL(), scrollLeft:-rect.left, scrollTop:-rect.top, pageWidth:rect.width, pageHeight:rect.height});
                 }
             });
         }
