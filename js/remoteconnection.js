@@ -88,7 +88,7 @@
                 onrendered: function (canvas) {
                     //var rect  = document.documentElement.getBoundingClientRect();
                     postMessageEvent('printPage', {img:canvas.toDataURL(), scrollLeft:rect.left, scrollTop:rect.top, pageWidth:rect.width, pageHeight:rect.height});
-                    scrollTo(rect.left, rect.top);
+                    scrollTo(-rect.left, -rect.top);
                 }
             });
         }
