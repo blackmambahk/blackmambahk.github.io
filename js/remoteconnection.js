@@ -130,10 +130,10 @@
                 //set the body width to our default
                 document.body.style.width = '1024px';
                 document.body.style.position = 'relative';
-                document.documentElement.style.maxWidth = '1024px';
                 document.documentElement.style.width = '1024px';
                 document.documentElement.style.minWidth = '1024px';
-                document.documentElement.style.height = 'auto;';
+                document.documentElement.style.maxWidth = '1024px';
+                document.documentElement.style.height = 'auto';
                 document.documentElement.style.minHeight = '100%';
                 document.documentElement.style.margin = '0 auto';
             }else{
